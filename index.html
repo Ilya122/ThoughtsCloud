@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/bulma.min.css">
+</head>
+
+<body class="has-background-success-light">
+    <div class="content has-text-centered">
+        <section class="hero is-link" style="background-color:#b4ddff">
+            <div class="hero-body">
+                <p class="title">
+                    Thoughts Cloud
+                </p>
+                <p class="subtitle">
+                    Relax and release your thoughts
+                </p>
+            </div>
+        </section>
+        </br>
+        <div id="main" class="container is-widescreen is-fluid" style="width:auto;height:640px">
+            <canvas id="drawingArea" style="width:100%;height:640px"></canvas>
+        </div>
+        <input type="text" class="input is-rounded is-large is-info" id="thoughtBox" placeholder="Write your thought to send it away..."><br>
+        <footer class="footer">
+            <p>Turn on music for relaxion:</p>
+            <audio controls loop id="playAudio" volume="0.5">
+                <source src="bensound-cute.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            </br>
+            <a href="https://www.Simplycode.co.il">
+                <img src="SimplyCodeLogo.svg" width="200"></img>
+            </a>
+            <p>Thanks to <a href="https://www.bensound.com/">https://www.bensound.com/</a> for music.</p>
+
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
