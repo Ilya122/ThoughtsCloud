@@ -40,7 +40,6 @@ class Cloud {
 
         if (this.X > canvas.width) {
             this.X = 0;
-            console.log("hit");
         }
     }
 
