@@ -12,3 +12,20 @@ body {
 #main {
     height: 100%;
 }
+
+.side-menu-container {
+    position: absolute;
+    left: 0;
+}
+
+.hero-cloudy-colors {
+    background-color: #b4ddff;
+}
+
+.hero-sunny-colors {
+    background-color: #ffe0b4;
+}
+
+.hero-rainy-colors {
+    background-color: #102e47;
+}

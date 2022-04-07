@@ -2,28 +2,38 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles/bulma.min.css">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles/bulma.min.css?v=2">
 </head>
 
 <body class="has-background-success-light">
-    <div class="content has-text-centered">
-        <section class="hero is-link" style="background-color:#b4ddff">
-            <div class="hero-body">
-                <p class="title">
-                    Thoughts Cloud
-                </p>
-                <p class="subtitle">
-                    Relax and release your thoughts
-                </p>
+    <section>
+        <div class="content has-text-centered">
+            <section id="heroTitle" class="hero is-link is-small" style="background-color:#b4ddff">
+                <div class="hero-body">
+                    <p class="title">
+                        Thoughts Cloud
+                    </p>
+                    <p class="subtitle">
+                        Relax and release your thoughts
+                    </p>
+                </div>
+            </section>
+            <div id="main" class="container is-max-widescreen">
+                <canvas class="container is-max-widescreen" id="drawingArea" width="1024" height="320" style="border:1px;border-style:solid;"></canvas>
             </div>
-        </section>
-        </br>
-        <div id="main" class="container is-widescreen is-fluid" style="width:auto;height:640px">
-            <canvas id="drawingArea" style="width:100%;height:640px"></canvas>
-        </div>
-        <input type="text" class="input is-rounded is-large is-info" id="thoughtBox" placeholder="Write your thought to send it away..."><br>
-        <footer class="footer">
+            <input type="text" class="input is-rounded is-large is-info" id="thoughtBox" placeholder="Write your thought to send it away..."><br>
+            </br>
+            <div class=" columns">
+                <img class="column is-1 image" onclick="SelectCloudy()" src="buttonCloud.png"></img>
+                <img class="column is-1 image" onclick="SelectSunny()" src="buttonSunny.png"></img>
+                <img class="column is-1 image" src="buttonRainy.png"></img>
+            </div>
+
+    </section>
+
+    <footer class="footer">
+        <center>
             <p>Turn on music for relaxion:</p>
             <audio controls loop id="playAudio" volume="0.5">
                 <source src="bensound-cute.mp3" type="audio/mp3">
@@ -34,10 +44,17 @@
                 <img src="SimplyCodeLogo.svg" width="200"></img>
             </a>
             <p>Thanks to <a href="https://www.bensound.com/">https://www.bensound.com/</a> for music.</p>
-
-        </footer>
+        </center>
+    </footer>
     </div>
+    <script src="Scripts/Weathers.js"></script>
+    <script src="Scripts/AnimationSprite.js"></script>
+    <script src="Scripts/Bird.js"></script>
 
+    <script src="Scripts/Sunny.js"></script>
+    <script src="Scripts/Cloudy.js"></script>
+
+    <script src="Scripts/Words.js"></script>
     <script src="app.js"></script>
 </body>
 
