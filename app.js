@@ -79,3 +79,9 @@ function SelectSunny() {
     window.weather = new Sunny(canvas);
     ChangeHeroColor();
 }
+
+
+function SelectRainy() {
+    window.weather = new Rainy(canvas);
+    ChangeHeroColor();
+}

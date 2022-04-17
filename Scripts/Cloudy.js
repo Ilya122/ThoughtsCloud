@@ -34,7 +34,6 @@ class Cloudy extends Weather {
 
         for (let i = 0; i < 5; i++) {
             var img = new Image();
-            img.onload = function() {}
             img.src = "cloud1.png";
             let randX = Math.round(getRand(0, canvasWidth - 50));
             let randY = Math.round(getRand(0, canvasHeight - 50));
@@ -45,7 +44,6 @@ class Cloudy extends Weather {
 
         for (let i = 0; i < 9; i++) {
             var img = new Image();
-            img.onload = function() {}
             img.src = "cloud2.png";
             let randX = Math.round(getRand(0, canvasWidth - 50));
             let randY = Math.round(getRand(0, canvasHeight - 50));
