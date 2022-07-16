@@ -1,7 +1,8 @@
 window.wordList = [];
 canvas = drawingArea;
 ctx = canvas.getContext('2d');
-
+canvas.width = document.body.clientWidth;
+canvas.height = document.body.clientHeight;
 window.weather = new Cloudy(canvas);
 
 function OnThoughtClick() {
@@ -28,6 +29,10 @@ thoughtBox.addEventListener("keyup", function(event) {
         OnThoughtClick();
     }
 });
+
+canvasAndInput.ondblclick = function() {
+    canvas.requestFullscreen();
+};
 
 
 function drawCanvas() {

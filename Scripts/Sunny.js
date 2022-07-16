@@ -31,6 +31,7 @@ class Sunny extends Weather {
         super();
         this.WordsColor = "255, 185, 2";
         this.Color = "#ffe0b4";
+        this.SkyColor = '#FFEAE2'
 
         let canvasHeight = canvas.height;
         let canvasWidth = canvas.width;
@@ -46,7 +47,7 @@ class Sunny extends Weather {
 
     Update(context, canvas) {
         if (this.Birds.length == 0) {
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 20; i++) {
                 this.SpawnNewBird(context, canvas);
             }
         }
@@ -74,18 +75,20 @@ class Sunny extends Weather {
     }
 
     Draw(context, canvas) {
+        super.Draw(context, canvas);
         this.Sun.Draw(context);
         this.Birds.map(bird => bird.Draw(context, canvas));
     }
 
     SpawnNewBird(context, canvas) {
+        let randX = getRand(10, 300);
         let randY = getRand(10, canvas.height - 10);
         let isRightSide = getRand(0, 100) > 50;
         let additionalVel = getRand(3, 10) / 10;
 
         let velocityX = isRightSide ? 3 + additionalVel : -3 + (-1 * additionalVel);
         let velocityY = 0;
-        let startX = isRightSide ? 0 : canvas.width;
+        let startX = isRightSide ? -1 * randX : canvas.width + randX;
         this.Birds.push(new Bird(startX, randY, velocityX, velocityY));
     }
 }

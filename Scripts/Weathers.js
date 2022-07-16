@@ -6,6 +6,7 @@ class Weather {
     constructor() {
         this.WordsColor = "";
         this.Color = "#b4ddff";
+        this.SkyColor = '#FFFFFF'
     }
 
     Update(context, canvas) {
@@ -13,6 +14,9 @@ class Weather {
     }
 
     Draw(context, canvas) {
-
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.rect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = this.SkyColor;
+        context.fill();
     }
 }

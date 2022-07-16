@@ -1,3 +1,11 @@
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        X: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+        Y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+    };
+}
+
 class RainDrop extends DrawableEntity {
     constructor(image, x, y, velocityX, velocityY, gravity) {
         super(image, x, y, velocityX, velocityY);
@@ -12,18 +20,6 @@ class RainDrop extends DrawableEntity {
         if (this.Gravity > 0) {
             this.Velocity.Y += this.Gravity;
         }
-        // let velXDec = 0.005;
-        // if (this.Velocity.X > 0) {
-        //     this.Velocity.X -= velXDec;
-        //     if (this.Velocity.X < velXDec) {
-        //         this.Velocity.X = 0;
-        //     }
-        // } else if (this.Velocity.X < 0) {
-        //     this.Velocity.X += velXDec;
-        //     if (this.Velocity.X > -velXDec) {
-        //         this.Velocity.X = 0;
-        //     }
-        // }
 
         // Check for umbrella pos and bounce
         if (this.X > canvas.width) {
@@ -33,11 +29,6 @@ class RainDrop extends DrawableEntity {
 
     Draw(context, canvas) {
         super.Draw(context, canvas);
-
-        // let halfSize = this.Image.width / 2;
-        // context.beginPath();
-        // context.arc(this.Position.X + halfSize, this.Position.Y + halfSize, this.Circle.Radius, 0, 2 * Math.PI);
-        // context.fill();
     }
 
 }
@@ -57,21 +48,15 @@ class Umbrealla {
         if (!this.IsRegistered) {
             let t = this;
             canvas.addEventListener("mousemove", function(e) {
-                var cRect = canvas.getBoundingClientRect(); // Gets CSS pos, and width/height
-                var canvasX = Math.round(e.clientX - cRect.left); // Subtract the 'left' of the canvas 
-                var canvasY = Math.round(e.clientY - cRect.top); // from the X/Y positions to make  
-                t.Position.X = canvasX - t.Image.width / 2;
-                t.Position.Y = canvasY - t.Image.height / 2;
+                let pos = getMousePos(canvas, e);
+                t.Position.X = pos.X - t.Image.width / 2;
+                t.Position.Y = pos.Y - t.Image.height / 2;
             });
         }
 
     }
     Draw(context, canvas) {
         context.drawImage(this.Image, this.Position.X, this.Position.Y);
-
-        // context.beginPath();
-        // context.arc(this.Position.X + 64, this.Position.Y + 64, this.Circle.Radius, 0, 2 * Math.PI);
-        // context.fill();
     }
 
     Collide(rainDrop) {
@@ -87,6 +72,7 @@ class Rainy extends Weather {
         super();
         this.WordsColor = "183, 234, 255";
         this.Color = "#001851";
+        this.SkyColor = '#BAC3FF'
 
         this.Umbrealla = new Umbrealla();
         this.RainDrops = [];
@@ -103,7 +89,6 @@ class Rainy extends Weather {
                 rainDrop.Position.Y = -20;
                 rainDrop.Velocity.X = 0;
                 rainDrop.Velocity.Y = 6;
-
             }
 
             rainDrop.Velocity.Y += 0.3;
@@ -131,6 +116,7 @@ class Rainy extends Weather {
     }
 
     Draw(context, canvas) {
+        super.Draw(context, canvas);
         this.Umbrealla.Draw(context, canvas);
         this.RainDrops.map(rainDrop => {
             rainDrop.Draw(context, canvas);
